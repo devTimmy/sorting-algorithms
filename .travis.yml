@@ -4,6 +4,10 @@ solution: Sorting.sln
 dotnet: 2.0.2
 mono: latest
 
+install:
+  - sudo apt-get install nunit-console
+
 script:
   - dotnet restore
   - dotnet build
+  - nunit-console /TestCases/bin/Debug/netcoreapp2.0/TestCases.dll
