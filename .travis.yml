@@ -5,9 +5,12 @@ dotnet: 2.0.2
 mono: latest
 
 install:
-  - sudo apt-get install nunit-console
+  - nuget restore Sorting.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+
 
 script:
   - dotnet restore
   - dotnet build
-  - nunit-console /TestCases/bin/Debug/netcoreapp2.0/TestCases.dll
+  - xbuild /p:Configuration=Release Sorting.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./TestCases/bin/Release/netcoreapp2.0/TestCases.dll
