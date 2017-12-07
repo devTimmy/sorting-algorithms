@@ -6,4 +6,4 @@ mono: latest
 
 script:
   - dotnet restore
-  - dotnet build Sorting
+  - dotnet build
